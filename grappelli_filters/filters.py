@@ -54,7 +54,7 @@ class RelatedAutocompleteFilter(AbstractFieldListFilter):
     def get_parameter_name(self, field_path):
         if self.url_parameter:
             field_path = self.url_parameter
-        return u'{0}__id__exact'.format(field_path)
+        return '{0}__id__exact'.format(field_path)
 
     def __init__(self, field, request, params, model, model_admin, field_path):
         super(RelatedAutocompleteFilter, self).__init__(field, request, params, model, model_admin, field_path)
@@ -62,7 +62,7 @@ class RelatedAutocompleteFilter(AbstractFieldListFilter):
             content_type = ContentType.objects.get_for_model(self.model)
         else:
             content_type = ContentType.objects.get_for_model(field.rel.to)
-        self.grappelli_trick = u'/{app_label}/{model_name}/'.format(
+        self.grappelli_trick = '/{app_label}/{model_name}/'.format(
             app_label=content_type.app_label,
             model_name=content_type.model
         )
@@ -72,12 +72,12 @@ class SearchFilter(AbstractFieldListFilter):
     template = 'grappelli_filters/search.html'
 
     def get_parameter_name(self, field_path):
-        return u'{0}__icontains'.format(field_path)
+        return '{0}__icontains'.format(field_path)
 
 
 class SearchFilterC(SearchFilter):
     """ Case-sensitive serach filter """
 
     def get_parameter_name(self, field_path):
-        return u'{0}__contains'.format(field_path)
+        return '{0}__contains'.format(field_path)
 
