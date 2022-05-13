@@ -3,3 +3,16 @@
 *.pyc
 local_settings.py
 django_grappelli_filters.egg-info
+
+#############
+## Mac
+#############
+
+.DS_Store
+
+#################
+## Intellij
+#################
+
+.idea/
+.pycharm_helpers/
