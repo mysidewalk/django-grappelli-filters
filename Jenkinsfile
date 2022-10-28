@@ -1,6 +1,7 @@
 pipeline {
     agent {
         dockerfile {
+            image 'gcr.io/mindmixer-sidewalk/python:3.9'
             args '-u root:root'
         }
     }
@@ -8,6 +9,13 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     stages {
+        stage('Build') {
+            steps {
+                sh 'pip install --upgrade pip==22.1.2'
+                sh 'pip install . --no-index'
+                sh 'chmod -R 777 .'
+            }
+        }
         stage('Lint') {
             steps {
                 // https://github.com/actions/starter-workflows/blob/master/ci/python-package.yml
