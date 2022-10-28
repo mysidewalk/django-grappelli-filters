@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        dockerfile {
+        docker {
             image 'gcr.io/mindmixer-sidewalk/python:3.9'
             args '-u root:root'
         }
